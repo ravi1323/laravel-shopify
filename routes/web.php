@@ -14,4 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ShopifyController::class, 'index'])->middleware(['verify.shopify'])->name('home');
+Route::get('/', function() {
+    return view('dashboard');
+})->middleware(['verify.shopify'])->name('home');
+
+Route::view('/products', 'products')->middleware(['verify.shopify'])->name('products');
+Route::view('/customers', 'customers')->middleware(['verify.shopify'])->name('customers');
+Route::view('/settings', 'settings')->middleware(['verify.shopify'])->name('settings');
