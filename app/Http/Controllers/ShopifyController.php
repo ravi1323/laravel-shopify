@@ -11,7 +11,8 @@ class ShopifyController extends Controller
     {
         $shop = Auth::user();
         $metafields = $shop->api()->rest('GET', '/admin/metafields.json');
-        dd($metafields);
+        $products = $shop->api()->rest('GET', '/admin/api/2021-10/products.json');
+        dd($products);
         return view('welcome');
     }
 }
