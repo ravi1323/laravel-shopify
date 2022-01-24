@@ -10,7 +10,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('SHOPIFY_DEBUG', false),
+    'debug' => (bool) env('SHOPIFY_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -43,7 +43,7 @@ return [
     |
     */
 
-    'manual_routes' => env('SHOPIFY_MANUAL_ROUTES', false),
+    'manual_routes' => env('SHOPIFY_MANUAL_ROUTES', true),
 
     /*
     |--------------------------------------------------------------------------
