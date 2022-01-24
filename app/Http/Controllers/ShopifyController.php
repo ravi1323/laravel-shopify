@@ -10,7 +10,8 @@ class ShopifyController extends Controller
     public function index()
     {
         $shop = Auth::user();
-        // dd($shop);
+        $metafields = $shop->api()->rest('GET', '/admin/products/metafields.json');
+        dd($metafields);
         return view('welcome');
     }
 }
