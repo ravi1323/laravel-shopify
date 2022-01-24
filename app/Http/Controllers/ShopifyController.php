@@ -30,6 +30,7 @@ class ShopifyController extends Controller
          */
         $customers = $shop->api()->rest('GET', $endpoints["customers"]);
         $customer_ids = [];
+        dd($customers);
         foreach($customers["body"]["customers"] as $customer)
         {
             array_push($customer_ids, $customer["id"]);
