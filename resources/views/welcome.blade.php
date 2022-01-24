@@ -31,6 +31,9 @@
             @endforeach
         </tbody>
     </table>
+    {{-- @php
+        dd($products);
+    @endphp --}}
 @endsection
 
 @section('scripts')
