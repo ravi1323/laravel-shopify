@@ -10,7 +10,7 @@ class ShopifyController extends Controller
     public function index()
     {
         $shop = Auth::user();
-        dd($shop);
+        // dd($shop);
         return view('welcome');
     }
 }
