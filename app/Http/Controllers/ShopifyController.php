@@ -5,26 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Osiset\ShopifyApp\Http\Middleware\VerifyShopify;
 
 class ShopifyController extends Controller
 {
+
     public function index()
     {
         $shop = Auth::user();
-
-        // getting all shopify endpoints
         $endpoints = Config::get('constants.shopify-endpoints');
-        
-        /**
-         * collecting all collections id
-         */
-        $collect = $shop->api()->rest('GET', $endpoints["collect"]);
-        $collection_ids = [];
-        foreach($collect['body']['collects'] as $collect)
-        {
-            array_push($collection_ids, $collect['collection_id']);
-        }
+        $shop_metafields = $shop->api()->rest('GET', $endpoints['shop_metafield'])["body"]["metafields"];
+        dd($shop_metafields);
+        return view('dashboard',[
+            "shop_metafields"=>$shop_metafields
+        ]);
+    }
 
+    public function products_metafield() 
+    {
+        $shop = Auth::user();
+        $endpoints = Config::get('constants.shopify-endpoints');
         /**
          * collecting all products id
          */
@@ -34,6 +34,25 @@ class ShopifyController extends Controller
         {
             array_push($product_ids, $product["id"]);
         }
+
+        /**
+         * fetching all products metafield using product id.
+         */
+        $products_metafields = [];
+        foreach($product_ids as $product_id)
+        {
+            $product_metafield = $shop->api()->rest('GET', $endpoints["product_metafield"]($product_id))["body"]["metafields"];
+            array_push($products_metafields,$product_metafield);
+        }
+        return view('products_metafield',[
+            "products_metafields"=>$products_metafields
+        ]);
+    }
+
+    public function customers_matafield() 
+    {
+        $shop = Auth::user();
+        $endpoints = Config::get('constants.shopify-endpoints');
         /**
          * collecting all customers id
          */
@@ -45,30 +64,40 @@ class ShopifyController extends Controller
         }
 
         /**
-         * fetching all metafields of [products, collections, customers, shop].
+         * fetching all customers metafield using customer id.
          */
-        $metafields = [
-            "products_metafield"=>[],
-            "customers_metafield"=>[],
-            "collections_metafield"=>[]
-        ];
-        foreach($product_ids as $product_id)
-        {
-            $product_metafield = $shop->api()->rest('GET', '/admin/products/'.$product_id.'/metafields.json')["body"]["metafields"];
-            array_push($metafields["products_metafield"],$product_metafield);
-        }
+        $customers_metafields = [];
         foreach($customer_ids as $customer_id)
         {
-            $customer_metafield = $shop->api()->rest('GET', '/admin/customers/'.$customer_id.'/metafields.json')["body"]["metafields"];
-            array_push($metafields["customers_metafield"], $customer_metafield);
+            $customer_metafield = $shop->api()->rest('GET', $endpoints["customer_metafield"]($customer_id))["body"]["metafields"];
+            array_push($customers_metafields, $customer_metafield);
         }
+        return view('customers_metafield', [
+            "customers_metafields"=>$customers_metafields
+        ]);
+    }
+
+    public function collections_metafield() 
+    {
+        $shop = Auth::user();
+        $endpoints = Config::get('constants.shopify-endpoints');
+        /**
+         * collecting all collections id
+         */
+        $collect = $shop->api()->rest('GET', $endpoints["collect"]);
+        $collection_ids = [];
+        foreach($collect['body']['collects'] as $collect)
+        {
+            array_push($collection_ids, $collect['collection_id']);
+        }
+
+        $collections_metafields = [];
         foreach($collection_ids as $collection_id) {
-            $collection_metafield = $shop->api()->rest('GET','/admin/collections/'.$collection_id.'/metafields.json')["body"]["metafields"];
-            array_push($metafields["collections_metafield"], $collection_metafield);
+            $collection_metafield = $shop->api()->rest('GET',$endpoints["collection_metafield"]($collection_id))["body"]["metafields"];
+            array_push($collections_metafields, $collection_metafield);
         }
-        dd($metafields);
-        return view('welcome', [
-            'products'=>$products["body"]["products"]
+        return view('collections_metafield',[
+            "collections_metafields"=>$collections_metafields
         ]);
     }
 }

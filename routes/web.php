@@ -16,10 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ShopifyController::class, 'index'])->middleware(['verify.shopify'])->name('home');
 
-// Route::get('/login', function() {
-//     return "loging route.";
-// })->name('login');
-
-Route::view('/products', 'products')->middleware(['verify.shopify'])->name('products');
-Route::view('/customers', 'customers')->middleware(['verify.shopify'])->name('customers');
-Route::view('/collection', 'settings')->middleware(['verify.shopify'])->name('settings');
+Route::get('/products-metafield', [ShopifyController::class,'products_metafield'])->middleware(['verify.shopify'])->name('products-metafield');
+Route::get('/customers-metafield', [ShopifyController::class,'customers_matafield'])->middleware(['verify.shopify'])->name('customers-metafield');
+Route::get('/collection-metafield', [ShopifyController::class,'collections_metafield'])->middleware(['verify.shopify'])->name('collections-metafield');

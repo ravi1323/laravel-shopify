@@ -6,6 +6,8 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <script src="https://unpkg.com/turbolinks"></script>
         {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+        <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
         <title>{{ \Osiset\ShopifyApp\Util::getShopifyConfig('app_name') }}</title>
         @yield('styles')
     </head>
@@ -36,7 +38,7 @@
                     apiKey: "{{ \Osiset\ShopifyApp\Util::getShopifyConfig('api_key', $shopDomain ?? Auth::user()->name ) }}",
                     shopOrigin: "{{ $shopDomain ?? Auth::user()->name }}",
                     host: "{{ \Request::get('host') }}",
-                    forceRedirect: true,
+                    forceRedirect: false,
                 });
             </script>
 
