@@ -14,14 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
-    return view('dashboard');
-})->middleware(['verify.shopify'])->name('home');
+Route::get('/', [ShopifyController::class, 'index'])->middleware(['verify.shopify'])->name('home');
 
-Route::get('/login', function() {
-    return "loging route.";
-})->name('login');
+// Route::get('/login', function() {
+//     return "loging route.";
+// })->name('login');
 
 Route::view('/products', 'products')->middleware(['verify.shopify'])->name('products');
 Route::view('/customers', 'customers')->middleware(['verify.shopify'])->name('customers');
-Route::view('/settings', 'settings')->middleware(['verify.shopify'])->name('settings');
+Route::view('/collection', 'settings')->middleware(['verify.shopify'])->name('settings');
