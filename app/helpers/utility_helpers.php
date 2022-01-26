@@ -9,7 +9,7 @@ function get_metafield_value_types() {
         ],
         [
             "api_name"=>"multi_line_text_field",
-            "example"=>"Ingredients:Flour,Water,Milk,Eggs",
+            "example"=>"Ingredients:\nFlour\nWater\nMilk\nEggs",
             "accept"=>"string"
         ],
         [
