@@ -1,0 +1,111 @@
+<?php
+
+function get_metafield_value_types() {
+    return [
+        [
+            "api_name"=>"single_line_text_field",
+            "example"=>"product_reference",
+            "accept"=>"string"
+        ],
+        [
+            "api_name"=>"multi_line_text_field",
+            "example"=>"Ingredients:Flour,Water,Milk,Eggs",
+            "accept"=>"string"
+        ],
+        [
+            "api_name"=>"page_reference",
+            "example"=>"gid://shopify/OnlineStorePage/1",
+            "accept"=>"string"
+        ],
+        [
+            "api_name"=>"product_reference",
+            "example"=>"gid://shopify/Product/1",
+            "accept"=>"string"
+        ],
+        [
+            "api_name"=>"variant_reference",
+            "example"=>"gid://shopify/ProductVariant/1",
+            "accept"=>"string"
+        ],
+        [
+            "api_name"=>"variant_reference",
+            "example"=>"gid://shopify/ProductVariant/1",
+            "accept"=>"string"
+        ],
+        [
+            "api_name"=>"file_reference",
+            "example"=>"gid://shopify/MediaImage/123",
+            "accept"=>"string"
+        ],
+        [
+            "api_name"=>"number_integer",
+            "example"=>"10",
+            "accept"=>"integer"
+        ],
+        [
+            "api_name"=>"number_decimal",
+            "example"=>"10.4",
+            "accept"=>"string"
+        ],
+        [
+            "api_name"=>"date",
+            "example"=>"2021-02-02",
+            "accept"=>"string"
+        ],
+        [
+            "api_name"=>"date_time",
+            "example"=>"2021-01-01T12:30:00",
+            "accept"=>"string"
+        ],
+        [
+            "api_name"=>"url",
+            "example"=>"https://www.shopify.com",
+            "accept"=>"string"
+        ],
+        [
+            "api_name"=>"json",
+            "example"=>"[{ \"k\": \"v1\" }, { \"k\": \"v2\" }]",
+            "accept"=>"json_string"
+        ],
+        [
+            "api_name"=>"boolean",
+            "example"=>"true",
+            "accept"=>"boolean"
+        ],
+        [
+            "api_name"=>"color",
+            "example"=>"#fff123",
+            "accept"=>"string"
+        ],
+        [
+            "api_name"=>"weight",
+            "boolean"=>"{ \"unit\": \"kg\", \"value\": 2.5 }",
+            "unit"=>[
+                "oz","lg","g","kg"
+            ],
+            "accept"=>"json_string"
+        ],
+        [
+            "api_name"=>"weight",
+            "volume"=>"{ \"unit\": \"ml\", \"value\": 20.0 }",
+            "unit"=>[
+                "ml","cl","l","m3","us_fl_oz","us_pt","us_qt","us_gal","imp_fl_oz","imp_pt","imp_qt","imp_gal"
+            ],
+            "accept"=>"json_string"
+        ],
+        [
+            "api_name"=>"dimension",
+            "volume"=>"{ \"unit\": \"cm\", \"value\": 25.0 }",
+            "unit"=>[
+                "in","ft","yd","mm","cm","m"
+            ],
+            "accept"=>"json_string"
+        ],
+        [
+            "api_name"=>"rating",
+            "boolean"=>"{ \"value\": \"3.5\", \"scale_min\": \"1.0\", \"scale_max\": \"5.0\" }"
+        ],
+    ];
+}
+
+?>

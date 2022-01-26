@@ -3,6 +3,7 @@ $shopify_api_version = env('SHOPIFY_API_VERSION', '2021-10');
 
 return [
     "shopify-endpoints"=>[
+        "create_metafield"=>"/admin/api/".$shopify_api_version."/metafields.json",
         "shop_metafield"=>"/admin/metafields.json",
         "products"=>"/admin/api/".$shopify_api_version."/products.json",
         "product_metafield"=>function($product_id) {

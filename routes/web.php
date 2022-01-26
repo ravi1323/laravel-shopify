@@ -13,9 +13,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware(['verify.shopify'])->group(function() {
+    
+    Route::get('/', [ShopifyController::class, 'index'])->name('home');
+    
+    Route::get('/products-metafield', [ShopifyController::class,'products_metafield'])->name('products-metafield');
+    Route::get('/customers-metafield', [ShopifyController::class,'customers_matafield'])->name('customers-metafield');
+    Route::get('/collection-metafield', [ShopifyController::class,'collections_metafield'])->name('collections-metafield');
+    
+    Route::get('/create_shop_metafield', [ShopifyController::class, 'create_shop_metafield'])->name('create_shop_metafield');
 
-Route::get('/', [ShopifyController::class, 'index'])->middleware(['verify.shopify'])->name('home');
-
-Route::get('/products-metafield', [ShopifyController::class,'products_metafield'])->middleware(['verify.shopify'])->name('products-metafield');
-Route::get('/customers-metafield', [ShopifyController::class,'customers_matafield'])->middleware(['verify.shopify'])->name('customers-metafield');
-Route::get('/collection-metafield', [ShopifyController::class,'collections_metafield'])->middleware(['verify.shopify'])->name('collections-metafield');
+    Route::post('/store_shop_metafield', [ShopifyController::class, 'store_shop_metafield'])->name('store_shop_metafield');
+});

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
-use Osiset\ShopifyApp\Http\Middleware\VerifyShopify;
 
 class ShopifyController extends Controller
 {
@@ -15,7 +14,6 @@ class ShopifyController extends Controller
         $shop = Auth::user();
         $endpoints = Config::get('constants.shopify-endpoints');
         $shop_metafields = $shop->api()->rest('GET', $endpoints['shop_metafield'])["body"]["metafields"];
-        dd($shop_metafields);
         return view('dashboard',[
             "shop_metafields"=>$shop_metafields
         ]);
@@ -98,6 +96,24 @@ class ShopifyController extends Controller
         }
         return view('collections_metafield',[
             "collections_metafields"=>$collections_metafields
+        ]);
+    }
+
+    public function create_shop_metafield() 
+    {
+        $metafield_value_types = get_metafield_value_types();
+        return view('create_shop_meatafield',[
+            "metafield_value_types"=>$metafield_value_types
+        ]);
+    }
+
+    public function store_shop_metafield(Request $request) 
+    {
+        $request->validate([
+            "key"=>"required",
+            "namespace"=>"required",
+            "value"=>"required",
+            "description"=>"required"
         ]);
     }
 }
