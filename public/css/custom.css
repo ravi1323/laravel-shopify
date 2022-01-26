@@ -1,1 +1,40 @@
+.nav-link {
+    color: #323232 !important;
+}
 
+.app-content {
+    height: 100vh;
+    background-color: #f7f7f7 !important;
+}
+
+.create-button {
+    display: block;
+    text-decoration: none;
+    outline: none;
+    padding: 7px 10px;
+    color: #323232;
+    background-color: #faeee7;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: 0.1s all ease-in-out;
+}
+
+.create-button:hover {
+    background-color: #fbe5e5;
+    text-shadow: 1px 1px #ffce45;
+}
+.create-button:focus {
+    background-color: #fffda2;
+    text-shadow: 1px 1px #ffce45;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+    border: 1px solid black !important;
+}
+
+.option-content {
+    display: flex;
+    justify-content: space-between;
+}

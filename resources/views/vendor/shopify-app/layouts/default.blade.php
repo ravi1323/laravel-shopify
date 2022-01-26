@@ -8,12 +8,16 @@
 
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
         
         <script src="https://unpkg.com/turbolinks"></script>
         {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+        
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.11.4/b-2.2.2/sl-1.3.4/datatables.min.css"/>
+        
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.11.4/b-2.2.2/sl-1.3.4/datatables.min.js"></script>
+
         <script src="{{ asset('js/custom.js') }}"></script>
         <title>{{ \Osiset\ShopifyApp\Util::getShopifyConfig('app_name') }}</title>
         @yield('styles')

@@ -4,7 +4,7 @@
     <div class="container-xl">
         <div class="row mt-2">
             <div class="col d-flex flex-row-reverse">
-                <a href="/create_shop_metafield" class="btn btn-info">Create Metafield</a>
+                <a href="/create_shop_metafield" class="create-button">Create Metafield</a>
             </div>
         </div>
         <div class="row">
@@ -21,17 +21,6 @@
                             <th scope="col" colspan="2">Actions</th>
                         </tr>
                     </thead>
-                    <tfoot class="w-100">
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Namespace</th>
-                            <th scope="col">Key</th>
-                            <th scope="col">Value</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Created</th>
-                            <th scope="col" colspan="2">Actions</th>
-                        </tr>
-                    </tfoot>
                     <tbody class="w-100">
                         @foreach ($shop_metafields as $shop_metafield)
                         <tr>

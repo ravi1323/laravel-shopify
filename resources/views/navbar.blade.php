@@ -19,8 +19,11 @@
     </div>
   </nav> --}}
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #FFF89A;">
     <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="{{ asset('images/metafield.png') }}" alt="brand-logo" style="width: 40px;">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

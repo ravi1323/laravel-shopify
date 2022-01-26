@@ -102,8 +102,20 @@ class ShopifyController extends Controller
     public function create_shop_metafield() 
     {
         $metafield_value_types = get_metafield_value_types();
+
+        // getting all namespace of all shop metafields.
+        $shop = Auth::user();
+        $endpoints = Config::get('constants.shopify-endpoints');
+        $shop_metafields = $shop->api()->rest('GET', $endpoints['shop_metafield'])["body"]["metafields"];
+
+        $namespaces = [];
+        foreach($shop_metafields as $metafield)
+        {
+            array_push($namespaces, $metafield["namespace"]);
+        }
         return view('create_shop_meatafield',[
-            "metafield_value_types"=>$metafield_value_types
+            "metafield_value_types"=>$metafield_value_types,
+            "namespaces"=>$namespaces
         ]);
     }
 
