@@ -121,11 +121,14 @@ class ShopifyController extends Controller
 
     public function store_shop_metafield(Request $request) 
     {
+        $type_validation = $request->value_type;
         $request->validate([
             "key"=>"required",
+            "value_type"=>'required',
             "namespace"=>"required",
-            "value"=>"required",
+            "value"=>"required|".$type_validation,
             "description"=>"required"
         ]);
+        dd($request->input());
     }
 }

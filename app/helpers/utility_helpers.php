@@ -65,7 +65,7 @@ function get_metafield_value_types() {
         [
             "api_name"=>"json",
             "example"=>"[{ \"k\": \"v1\" }, { \"k\": \"v2\" }]",
-            "type"=>"json_string"
+            "type"=>"json"
         ],
         [
             "api_name"=>"boolean",
@@ -83,7 +83,7 @@ function get_metafield_value_types() {
             "unit"=>[
                 "oz","lg","g","kg"
             ],
-            "type"=>"json_string"
+            "type"=>"json"
         ],
         [
             "api_name"=>"weight",
@@ -91,7 +91,7 @@ function get_metafield_value_types() {
             "unit"=>[
                 "ml","cl","l","m3","us_fl_oz","us_pt","us_qt","us_gal","imp_fl_oz","imp_pt","imp_qt","imp_gal"
             ],
-            "type"=>"json_string"
+            "type"=>"json"
         ],
         [
             "api_name"=>"dimension",
@@ -99,12 +99,12 @@ function get_metafield_value_types() {
             "unit"=>[
                 "in","ft","yd","mm","cm","m"
             ],
-            "type"=>"json_string"
+            "type"=>"json"
         ],
         [
             "api_name"=>"rating",
             "example"=>"{ \"value\": \"3.5\", \"scale_min\": \"1.0\", \"scale_max\": \"5.0\" }",
-            "type"=>"json_string"
+            "type"=>"json"
         ],
     ];
 }
